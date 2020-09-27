@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>My Cat's Name Today</title>
+</head>
+<body class="bg-light">
+    <!-- As a heading -->
+    <header class="text-center pt-5 pb-5 bg-info">
+        <div>
+            <h1>My Cat's Name Today</h1>
+        </div>
+    </header>
+
+    <section class="container">
+
+        <div class="border rounded mx-auto text-center pt-2 m-4 bg-light" style="width: 250px;">
+            <p id="kitty-name">Kitty Names</p>
+        </div>
+
+        <div class="mx-auto text-center m-4">
+            <button id="generate-button" type="button" class="btn btn-outline-primary">What Do I Call My Cat Today?</button>
+        </div>
+        
+    </section>
+    <script>
+        $(document).ready(function() {
+            var kittyNames = [];
+
+            $.getJSON("./cats.json", function(data) {
+                $.each(data.kitties, function(key, val) {
+                    kittyNames.push(val);
+                });
+            });
+            
+            $('#generate-button').click(function(){
+                var rand = Math.floor(Math.random() * Math.floor(kittyNames.length));
+                console.log('ckick');
+                $('#kitty-name').text(kittyNames[rand]);
+            });
+        });
+    </script>
+</body>
+</html>
