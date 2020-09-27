@@ -12,7 +12,7 @@
     <header class="text-center pt-5 pb-5 bg-info">
         <div>
             <h1>My Cat's Name Today</h1>
-            <h2 id="head-date">September 26, 2020</h2>
+            <h2 id="header-date">September 26, 2020</h2>
         </div>
     </header>
 
@@ -51,6 +51,8 @@
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('#header-date').text(moment().format("MMMM D, YYYY"));
+
             var kittyNames = [];
 
             $.getJSON("./cats.json", function(data) {
